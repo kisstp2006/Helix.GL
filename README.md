@@ -47,7 +47,8 @@ and EGL-Registry `8e56e86e65687697ef54114cdb1afabdfac756bf`.
 ## Build
 
 ```
-git clone --recursive https://github.com/kisstp2006/Helix.GL
+git clone https://github.com/kisstp2006/Helix.GL
+git -C Helix.GL submodule update --init
 cmake --preset windows-debug
 cmake --build --preset windows-debug
 ctest --preset windows-debug
