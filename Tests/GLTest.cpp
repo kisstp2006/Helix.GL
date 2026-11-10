@@ -1,7 +1,7 @@
-#include <helix/gl/egl.h>
-#include <helix/gl/loader.h>
-#include <helix/gl/wgl.h>
-#include <helix/testing/test.h>
+#include <Helix/GL/EGL.h>
+#include <Helix/GL/Loader.h>
+#include <Helix/GL/WGL.h>
+#include <Helix/Testing/Test.h>
 
 #include <cstdio>
 

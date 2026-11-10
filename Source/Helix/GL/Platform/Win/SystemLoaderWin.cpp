@@ -1,5 +1,5 @@
-#include <helix/gl/loader.h>
-#include <helix/gl/wgl.h>
+#include <Helix/GL/Loader.h>
+#include <Helix/GL/WGL.h>
 
 #include <windows.h>
 

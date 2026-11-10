@@ -1,5 +1,5 @@
-#include <helix/gl/loader.h>
-#include <helix/gl/egl.h>
+#include <Helix/GL/Loader.h>
+#include <Helix/GL/EGL.h>
 
 #if !defined(__EMSCRIPTEN__)
 #include <dlfcn.h>

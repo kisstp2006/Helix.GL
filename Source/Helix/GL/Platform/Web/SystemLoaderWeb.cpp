@@ -1,4 +1,4 @@
-#include <helix/gl/loader.h>
+#include <Helix/GL/Loader.h>
 
 #include <emscripten/html5_webgl.h>
 

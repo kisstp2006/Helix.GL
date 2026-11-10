@@ -1,6 +1,6 @@
 #pragma once
 
-#include <helix/gl/gl.h>
+#include <Helix/GL/GL.h>
 
 namespace helix::gl
 {

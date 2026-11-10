@@ -1,4 +1,4 @@
-#include <helix/gl/wgl.h>
+#include <Helix/GL/WGL.h>
 
 namespace helix::gl::wgl
 {

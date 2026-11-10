@@ -6,18 +6,19 @@ OpenGL, OpenGL ES, WebGL 2, EGL and WGL bindings for C++, released under CC0.
 
 | File | Content |
 |---|---|
-| `include/helix/gl/gl.h` | Types, enums and the entry points of OpenGL 4.6 core and OpenGL ES 3.2 plus selected extensions (bindless texture, buffer storage, multi draw indirect, debug, texture compression, timer queries, clip control, multiview) |
-| `include/helix/gl/egl.h` | EGL 1.5 with context, colorspace, platform and presentation time extensions |
-| `include/helix/gl/wgl.h` | WGL 1.0 with context creation, pixel format, sRGB, multisample and swap control extensions, without `windows.h` |
-| `include/helix/gl/loader.h` | System library loading (`opengl32`/`gdi32`, `libEGL`/`libGL`/`libGLESv2`, WebGL) and helpers |
-| `src/generated/` | Entry point tables |
-| `tools/generate.py` | The generator |
+| `Source/Helix/GL/GL.h` | Types, enums and the entry points of OpenGL 4.6 core and OpenGL ES 3.2 plus selected extensions (bindless texture, buffer storage, multi draw indirect, debug, texture compression, timer queries, clip control, multiview) |
+| `Source/Helix/GL/EGL.h` | EGL 1.5 with context, colorspace, platform and presentation time extensions |
+| `Source/Helix/GL/WGL.h` | WGL 1.0 with context creation, pixel format, sRGB, multisample and swap control extensions, without `windows.h` |
+| `Source/Helix/GL/Loader.h` | System library loading (`opengl32`/`gdi32`, `libEGL`/`libGL`/`libGLESv2`, WebGL) and helpers |
+| `Source/Helix/GL/Implementation/Generated/` | Entry point tables |
+| `Source/Helix/GL/Platform/<Os>/` | System library loading for `Win`, `Posix` and `Web` |
+| `Tools/GenerateBindings.py` | The generator |
 
 Everything lives in `helix::gl` (`helix::gl::egl`, `helix::gl::wgl`). Every entry point is a
 member of `api` and an inline wrapper with the usual name:
 
 ```cpp
-#include <helix/gl/loader.h>
+#include <Helix/GL/Loader.h>
 using namespace helix::gl;
 
 LoadWindowSystem();          // WGL or EGL, before creating a context
@@ -37,7 +38,7 @@ The generator reads the Khronos XML API registries (`gl.xml`, `wgl.xml` from Ope
 `egl.xml` from EGL-Registry). They are not stored here.
 
 ```
-python tools/generate.py <directory with gl.xml, egl.xml and wgl.xml>
+python Tools/GenerateBindings.py <directory with gl.xml, egl.xml and wgl.xml>
 ```
 
 Current output was generated from OpenGL-Registry `6af574a14089ccfee87efe230ebcdd8742859813`

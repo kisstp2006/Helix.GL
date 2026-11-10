@@ -267,8 +267,8 @@ def generate(registry, prefix, header_name, namespace, prelude, type_skip, featu
     h.append("#endif")
     h.append("#endif")
     h.append("")
-    if header_name != "gl.h":
-        h.append("#include <helix/gl/gl.h>")
+    if header_name != "GL.h":
+        h.append("#include <Helix/GL/GL.h>")
         h.append("")
     h.append(f"namespace {namespace}")
     h.append("{")
@@ -309,7 +309,7 @@ def generate(registry, prefix, header_name, namespace, prelude, type_skip, featu
     h.append("}")
     h.append("")
     s = []
-    s.append(f"#include <helix/gl/{header_name}>")
+    s.append(f"#include <Helix/GL/{header_name}>")
     s.append("")
     s.append(f"namespace {namespace}")
     s.append("{")
@@ -353,23 +353,23 @@ def main():
     src = Path(sys.argv[1])
     for f in ("gl.xml", "egl.xml", "wgl.xml"):
         print(f, hashlib.sha256((src / f).read_bytes()).hexdigest())
-    inc = ROOT / "include" / "helix" / "gl"
-    gen = ROOT / "src" / "generated"
+    inc = ROOT / "Source" / "Helix" / "GL"
+    gen = inc / "Implementation" / "Generated"
     inc.mkdir(parents=True, exist_ok=True)
     gen.mkdir(parents=True, exist_ok=True)
 
     gl = Registry(src / "gl.xml")
-    generate(gl, "gl", "gl.h", "helix::gl", KHR_TYPES, {"khrplatform"},
+    generate(gl, "gl", "GL.h", "helix::gl", KHR_TYPES, {"khrplatform"},
              [("gl", "4.6", True), ("gles2", "3.2", False)], GL_EXTENSIONS,
-             inc / "gl.h", gen / "gl_load.cpp", None)
+             inc / "GL.h", gen / "GLLoad.cpp", None)
 
     egl = Registry(src / "egl.xml")
-    generate(egl, "egl", "egl.h", "helix::gl::egl", EGL_PRELUDE, {"khrplatform", "eglplatform", "EGLint"},
-             [("egl", "1.5", False)], EGL_EXTENSIONS, inc / "egl.h", gen / "egl_load.cpp", None)
+    generate(egl, "egl", "EGL.h", "helix::gl::egl", EGL_PRELUDE, {"khrplatform", "eglplatform", "EGLint"},
+             [("egl", "1.5", False)], EGL_EXTENSIONS, inc / "EGL.h", gen / "EGLLoad.cpp", None)
 
     wgl = Registry(src / "wgl.xml")
-    generate(wgl, "wgl", "wgl.h", "helix::gl::wgl", WGL_PRELUDE, None,
-             [("wgl", "1.0", False)], WGL_EXTENSIONS, inc / "wgl.h", gen / "wgl_load.cpp", None)
+    generate(wgl, "wgl", "WGL.h", "helix::gl::wgl", WGL_PRELUDE, None,
+             [("wgl", "1.0", False)], WGL_EXTENSIONS, inc / "WGL.h", gen / "WGLLoad.cpp", None)
 
 
 if __name__ == "__main__":

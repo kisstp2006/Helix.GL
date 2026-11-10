@@ -1,4 +1,4 @@
-#include <helix/gl/egl.h>
+#include <Helix/GL/EGL.h>
 
 namespace helix::gl::egl
 {
