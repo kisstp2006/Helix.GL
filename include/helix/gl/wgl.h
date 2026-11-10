@@ -18,14 +18,14 @@ namespace helix::gl::wgl
     using BOOL = int;
     using BYTE = unsigned char;
     using WORD = unsigned short;
-    using DWORD = unsigned long;
+    using DWORD = std::uint32_t;
     using UINT = unsigned int;
     using INT = int;
     using INT32 = std::int32_t;
     using INT64 = std::int64_t;
     using FLOAT = float;
     using USHORT = unsigned short;
-    using LONG = long;
+    using LONG = std::int32_t;
     using LPVOID = void*;
     using VOID = void;
     using HANDLE = void*;
